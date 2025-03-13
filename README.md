@@ -1,2 +1,2 @@
-# Learning Management System (LMS)
-Creating Learning Management System (LMS) website. A Web Development Project by group that will be made from scratch.
+# Streamlining Digital Education at WMSU: A Basic LMS Implementation
+"Streamlining Digital Education at WMSU: A Basic LMS Implementation" is a project focused on enhancing online learning at Western Mindanao State University (WMSU) through a simple yet effective Learning Management System (LMS). This implementation aims to provide a structured digital platform for managing courses, assignments, and communication between students and instructors. By leveraging web technologies, the system seeks to improve accessibility, engagement, and efficiency in academic interactions.
