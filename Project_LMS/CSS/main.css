@@ -392,7 +392,7 @@ input[type="text"] {
     width: 30%;
     height: 100%;
     text-align: right;
-    background-image: url("../images/1.png"); /* Replace with your notes icon path */
+    background-image: url("../IMAGE/1.png"); /* Replace with your notes icon path */
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
