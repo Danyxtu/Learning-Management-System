@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
 /* Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Inter", Arial, sans-serif;
 }
 
 body {
@@ -149,9 +151,16 @@ input[type="text"] {
 }
 
 .logo h1 {
-    font-size: 20px;
+    font-size: 30px;
     color: #0a5c36;
     font-weight: bold;
+}
+
+.logo .greyheader {
+    font-size: 30px;
+    color: #666;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .user-profile {
@@ -160,10 +169,9 @@ input[type="text"] {
 }
 
 .user-avatar {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #0a5c36;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -209,7 +217,7 @@ input[type="text"] {
 }
 
 .sidebar li {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .sidebar a {
@@ -313,7 +321,7 @@ input[type="text"] {
     height: 30px;
     border-radius: 50%;
     background-color: white;
-    border: 1px solid #ddd;
+    border: 1px solid #0c3a0c;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -357,13 +365,18 @@ input[type="text"] {
     position: relative;
     overflow: hidden;
     margin-bottom: 15px;
-    height: auto; /* Allow height to adapt to content */
+    min-height: 120px; /* Ensure enough height for the decoration */
+    display: flex; /* Use flexbox to align content and decoration */
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center; /* Vertically center the content */
 }
 
 .class-card-content {
     position: relative;
     z-index: 2;
-    width: 70%;
+    width: 70%; /* Takes up 70% of the card width */
+    padding-right: 10px; /* Add spacing between content and decoration */
+    text-align: left; /* Ensure text aligns to the left */
 }
 
 .class-title {
@@ -389,10 +402,9 @@ input[type="text"] {
     right: 0;
     z-index: 1;
     opacity: 0.9;
-    width: 30%;
-    height: 100%;
-    text-align: right;
-    background-image: url("../IMAGE/1.png"); /* Replace with your notes icon path */
+    width: 30%; /* Takes up 30% of the card width */
+    height: 100%; /* Matches the height of the card */
+    background-image: url("../images/1.png"); /* Replace with your notes icon path */
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -402,6 +414,63 @@ input[type="text"] {
 .class-decoration img {
     height: 70px;
     object-fit: contain;
+}
+
+/* Make classes container scrollable */
+#classesContainer {
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: auto;
+    padding-right: 5px; /* Add some padding for the scrollbar */
+}
+
+/* Custom scrollbar styling (optional) */
+#classesContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+#classesContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#classesContainer::-webkit-scrollbar-thumb {
+    background: #0c3a0c;
+    border-radius: 10px;
+}
+
+#classesContainer::-webkit-scrollbar-thumb:hover {
+    background: #0a5c36;
+}
+
+/* Ensure the dashboard card maintains its height */
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body {
+    flex: 1;
+    overflow: hidden; /* Hide overflow so it doesn't affect layout */
+    position: relative;
+}
+
+/* Maintain fixed height for the dashboard grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(400px, auto) minmax(300px, auto);
+    gap: 20px;
+}
+
+/* Add these styles to ensure task list scrolls when needed */
+#taskContainer {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#taskItems {
+    padding-right: 5px;
 }
 
 /* Calendar */
@@ -498,6 +567,7 @@ input[type="text"] {
     border: 2px solid #198754;
     color: #000;
 }
+
 /* Stats Grid */
 .stats-grid {
     display: grid;
@@ -590,5 +660,24 @@ input[type="text"] {
 
     .main-content {
         padding: 10px;
+    }
+
+    .class-card {
+        flex-direction: column; /* Stack content and decoration vertically */
+        min-height: auto; /* Allow height to adjust */
+    }
+
+    .class-card-content {
+        width: 100%; /* Take full width */
+        padding-right: 0;
+        margin-bottom: 10px; /* Space before decoration */
+    }
+
+    .class-decoration {
+        position: relative; /* Remove absolute positioning */
+        width: 100%; /* Take full width */
+        height: auto; /* Adjust height based on image */
+        background-size: contain;
+        background-position: center;
     }
 }
