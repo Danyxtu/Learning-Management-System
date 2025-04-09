@@ -1,0 +1,7 @@
+/*
+  Need to create database first to establish
+  connection between php and database
+*/
+CREATE DATABASE CCS_Learn;
+USE CCS_Learn;
+
