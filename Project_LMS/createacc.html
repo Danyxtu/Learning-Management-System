@@ -67,21 +67,28 @@
             </div>
 
             <!-- Create account form -->
-            <form class="signup-form" id="loginForm">
+            <form class="signup-form" action="/Project_LMS/PHP/CLASS/signup_api.php" id="loginForm">
                 <!-- Email input -->
                 <input
                     type="email"
                     placeholder="Email"
+                    name="email"
                     required
                     class="full-width"
                 />
 
                 <!-- Name inputs - row with two columns -->
                 <div class="input-row">
-                    <input type="text" placeholder="First Name" required />
+                    <input 
+                        type="text" 
+                        placeholder="First Name" 
+                        name="firstName"
+                        required
+                    />
                     <input
                         class="lastname"
                         type="text"
+                        name="lastName"
                         placeholder="Last Name"
                         required
                     />
@@ -91,6 +98,7 @@
                 <input
                     type="password"
                     placeholder="Password"
+                    name="password"
                     required
                     class="full-width"
                 />
@@ -99,6 +107,7 @@
                 <input
                     type="password"
                     placeholder="Confirm Password"
+                    name="confirmPassword"
                     required
                     class="full-width"
                 />

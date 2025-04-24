@@ -331,10 +331,10 @@ function showSidebar(){
     sidebar.classList.add('show');
 }
 
-document.addEventListener("click", (e)=>{
-    const sidebar = document.querySelector('.sidebar');
-    const menu = document.querySelector(".menu");
-    if(!sidebar.contains(e.target) && !menu.contains(e.target)){
-        sidebar.style.display = "none";
-    }
-});
+// document.addEventListener("click", (e)=>{
+//     const sidebar = document.querySelector('.sidebar');
+//     const menu = document.querySelector(".menu");
+//     if(!sidebar.contains(e.target) && !menu.contains(e.target)){
+//         sidebar.style.display = "none";
+//     }
+// });

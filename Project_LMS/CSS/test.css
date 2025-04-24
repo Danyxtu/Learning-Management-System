@@ -7,7 +7,8 @@
     box-sizing: border-box;
     font-family: "Inter", Arial, sans-serif;
 }
-body{
+
+body {
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
@@ -127,6 +128,152 @@ input[type="text"] {
     min-height: 100vh;
 }
 
+/* Header Styles */
+.header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 30px;
+    color: #0a5c36;
+    font-weight: bold;
+}
+
+.logo .greyheader {
+    font-size: 30px;
+    color: #666;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user-info {
+    text-align: left;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 180px;
+    background-color: #0c3a0c;
+    color: white;
+    padding: 20px 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar li {
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar li.active a {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Dropdown */
+.dropdown-toggle {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu.show {
+    max-height: 500px;
+}
+
+.dropdown-menu a {
+    padding-left: 40px;
+}
+
+.fa-chevron-down {
+    transition: transform 0.3s;
+}
+
+.dropdown-toggle.active .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+.class-item i {
+    font-size: 10px;
+}
+
 /* Main Content */
 .main-content {
     flex: 1;
@@ -165,9 +312,7 @@ input[type="text"] {
 
 .card-body {
     padding: 15px;
-    height: 100%;
-    max-height: 500px;
-    overflow: hidden;
+    min-height: 200px;
 }
 
 /* Add Button */
@@ -218,6 +363,7 @@ input[type="text"] {
     padding: 20px;
     color: #333;
     position: relative;
+    overflow: hidden;
     margin-bottom: 15px;
     min-height: 120px; /* Ensure enough height for the decoration */
     display: flex; /* Use flexbox to align content and decoration */
@@ -271,7 +417,8 @@ input[type="text"] {
 }
 
 /* Make classes container scrollable */
-#classesContainer { /* Adjust this value as needed */
+#classesContainer {
+    max-height: 300px; /* Adjust this value as needed */
     overflow-y: auto;
     padding-right: 5px; /* Add some padding for the scrollbar */
 }
@@ -304,7 +451,7 @@ input[type="text"] {
 
 .card-body {
     flex: 1;
-    overflow-y: auto; /* Hide overflow so it doesn't affect layout */
+    overflow: hidden; /* Hide overflow so it doesn't affect layout */
     position: relative;
 }
 
@@ -504,6 +651,11 @@ input[type="text"] {
 @media (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
     }
 
     .main-content {
