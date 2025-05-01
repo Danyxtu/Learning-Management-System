@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CCS Learn: Tasks</title>
+        <link
+            rel="icon"
+            href="IMAGE/ccs-logo.png"
+            type="image/x-icon/jpeg/png"
+        />
+        <link rel="stylesheet" href="../main.css" />
+        <link rel="stylesheet" href="/scratch/task/tasks.css" />
+        <link rel="stylesheet" href="tasks-modal.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+    </head>
+
+    <body>
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Header -->
+            <header class="header">
+                <div class="logo">
+                    <div class="menu" onclick="showSidebar()">X</div>
+                    <img src="IMAGE/ccs-logo.png" alt="CCS Logo" />
+                    <h1>CCS Learn: Your Digital Classroom</h1>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="IMAGE/ccs-logo.png" alt="User Avatar" />
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name">Laur, Solijon</p>
+                        <p class="user-role">Learner</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="content-wrapper">
+                <!-- Sidebar -->
+                <nav class="sidebar">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-th-large"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-book"></i>
+                                <span>Class</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="class-item">
+                                    <a href="#">
+                                        <i class="fa fa-circle"></i>
+                                        <span>Class 1</span>
+                                    </a>
+                                </li>
+                                <!-- Additional classes will be added dynamically -->
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="tasks.html">
+                                <i class="fa fa-tasks"></i>
+                                <span>Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-solid fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out-alt"></i>
+                                <span>Log out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Main Content Area -->
+                <main class="main-content">
+                    <div class="tasks-container">
+                        <!-- Tasks Header with Filter -->
+                        <div class="tasks-header">
+                            <h1>Tasks</h1>
+                            <div class="tasks-filter">
+                                <select id="classFilter">
+                                    <option value="all">All Classes</option>
+                                    <option value="class1">Class 1</option>
+                                    <!-- More classes will be added dynamically -->
+                                </select>
+                                <select id="statusFilter">
+                                    <option value="all">All Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="missing">Missing</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Tasks Navigation -->
+                        <div class="tasks-nav">
+                            <button
+                                class="task-nav-btn active"
+                                data-filter="upcoming"
+                            >
+                                Upcoming
+                            </button>
+                            <button class="task-nav-btn" data-filter="overdue">
+                                Overdue
+                            </button>
+                            <button
+                                class="task-nav-btn"
+                                data-filter="completed"
+                            >
+                                Completed
+                            </button>
+                        </div>
+
+                        <!-- Tasks Content -->
+                        <div class="tasks-content">
+                            <!-- Upcoming Tasks Section -->
+                            <div class="task-section" id="upcoming-tasks">
+                                <h2>Upcoming Tasks</h2>
+
+                                <!-- Task Item -->
+                                <div class="task-item">
+                                    <div class="task-icon">
+                                        <i class="fa fa-file-alt"></i>
+                                    </div>
+                                    <div class="task-details">
+                                        <h3 class="task-title">
+                                            Assignment: HTML/CSS Basics
+                                        </h3>
+                                        <p class="task-class">
+                                            Class: Web Development
+                                        </p>
+                                        <p class="task-due">
+                                            Due: Apr 30, 11:59 PM
+                                        </p>
+                                    </div>
+                                    <div class="task-status pending">
+                                        <span>Pending</span>
+                                    </div>
+                                    <button
+                                        class="task-action-btn"
+                                        data-task-id="html-css-basics"
+                                    >
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Task Item -->
+                                <div class="task-item">
+                                    <div class="task-icon">
+                                        <i class="fa fa-code"></i>
+                                    </div>
+                                    <div class="task-details">
+                                        <h3 class="task-title">
+                                            Activity: JavaScript Functions
+                                        </h3>
+                                        <p class="task-class">
+                                            Class: Programming Fundamentals
+                                        </p>
+                                        <p class="task-due">
+                                            Due: May 5, 11:59 PM
+                                        </p>
+                                    </div>
+                                    <div class="task-status pending">
+                                        <span>Pending</span>
+                                    </div>
+                                    <button
+                                        class="task-action-btn"
+                                        data-task-id="js-functions"
+                                    >
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Empty state (hidden by default) -->
+                                <div
+                                    class="empty-state"
+                                    id="empty-upcoming"
+                                    style="display: none"
+                                >
+                                    <div class="empty-icon">
+                                        <i class="fa fa-clipboard-check"></i>
+                                    </div>
+                                    <p>No upcoming tasks</p>
+                                    <span class="empty-hint"
+                                        >All caught up!</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Overdue Tasks Section (hidden by default) -->
+                            <div
+                                class="task-section"
+                                id="overdue-tasks"
+                                style="display: none"
+                            >
+                                <h2>Overdue Tasks</h2>
+
+                                <!-- Task Item -->
+                                <div class="task-item">
+                                    <div class="task-icon">
+                                        <i class="fa fa-exclamation-circle"></i>
+                                    </div>
+                                    <div class="task-details">
+                                        <h3 class="task-title">
+                                            Project: Database Design
+                                        </h3>
+                                        <p class="task-class">
+                                            Class: Database Management
+                                        </p>
+                                        <p class="task-due">
+                                            Due: Apr 20, 11:59 PM
+                                        </p>
+                                    </div>
+                                    <div class="task-status overdue">
+                                        <span>Overdue</span>
+                                    </div>
+                                    <button
+                                        class="task-action-btn"
+                                        data-task-id="db-design"
+                                    >
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Empty state (hidden by default) -->
+                                <div
+                                    class="empty-state"
+                                    id="empty-overdue"
+                                    style="display: none"
+                                >
+                                    <div class="empty-icon">
+                                        <i class="fa fa-check-circle"></i>
+                                    </div>
+                                    <p>No overdue tasks</p>
+                                    <span class="empty-hint"
+                                        >Great job staying on track!</span
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Completed Tasks Section (hidden by default) -->
+                            <div
+                                class="task-section"
+                                id="completed-tasks"
+                                style="display: none"
+                            >
+                                <h2>Completed Tasks</h2>
+
+                                <!-- Task Item -->
+                                <div class="task-item completed">
+                                    <div class="task-icon">
+                                        <i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="task-details">
+                                        <h3 class="task-title">
+                                            Quiz: Data Structures
+                                        </h3>
+                                        <p class="task-class">
+                                            Class: Data Structures and
+                                            Algorithms
+                                        </p>
+                                        <p class="task-due">
+                                            Completed: Apr 18, 10:30 AM
+                                        </p>
+                                    </div>
+                                    <div class="task-status completed">
+                                        <span>Completed</span>
+                                    </div>
+                                    <button
+                                        class="task-action-btn"
+                                        data-task-id="data-structures"
+                                    >
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Empty state (hidden by default) -->
+                                <div
+                                    class="empty-state"
+                                    id="empty-completed"
+                                    style="display: none"
+                                >
+                                    <div class="empty-icon">
+                                        <i class="fa fa-clipboard-list"></i>
+                                    </div>
+                                    <p>No completed tasks yet</p>
+                                    <span class="empty-hint"
+                                        >Tasks you complete will appear
+                                        here</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Submission Modal -->
+        <div class="modal" id="submissionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="task-icon">
+                        <i class="fa fa-file-alt"></i>
+                    </div>
+                    <div class="task-info">
+                        <h2 id="modal-task-title">
+                            Activity 1: HTML/CSS Basics
+                        </h2>
+                        <p id="modal-task-due">Due: 3 Mar, 11:59 PM</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="task-description">
+                        <p>
+                            Create a simple personal portfolio page using HTML
+                            and CSS. Your portfolio should include:
+                        </p>
+                        <ul>
+                            <li>
+                                A header with your name and a navigation menu
+                            </li>
+                            <li>At least one section with a brief bio</li>
+                            <li>
+                                A projects section with at least two
+                                projects/skills
+                            </li>
+                            <li>
+                                A contact section (with form placeholder
+                                elements)
+                            </li>
+                            <li>
+                                A footer section with a form (doesn't need to be
+                                functional)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="task-resources">
+                        <div class="resource-file">
+                            <div class="resource-icon">
+                                <i class="fa fa-file-pdf"></i>
+                            </div>
+                            <div class="resource-details">
+                                <p class="resource-name">
+                                    Assignment1_HTML_CSS_Basics.pdf
+                                </p>
+                                <p class="resource-type">PDF</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submission-area">
+                        <h3>Your work</h3>
+                        <div class="submission-status" id="submission-status">
+                            Pending
+                        </div>
+                        <div class="submission-files" id="submission-files">
+                            <!-- Uploaded files will appear here -->
+                        </div>
+                        <div class="submission-actions">
+                            <button id="uploadBtn" class="upload-btn">
+                                <i class="fa fa-upload"></i>
+                                <span>Upload</span>
+                            </button>
+                            <button id="linkBtn" class="link-btn">
+                                <i class="fa fa-link"></i>
+                                <span>Link</span>
+                            </button>
+                            <input
+                                type="file"
+                                id="fileInput"
+                                style="display: none"
+                                multiple
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelBtn" class="cancel-btn">Cancel</button>
+                    <button id="saveBtn" class="save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Without Work Confirmation Modal -->
+        <div class="modal" id="saveConfirmModal">
+            <div class="modal-content confirmation-modal">
+                <h3>Mark as save?</h3>
+                <p>
+                    You didn't attach any work for "<span id="task-name"></span
+                    >", are you sure?
+                </p>
+                <div class="confirmation-buttons">
+                    <button id="cancelConfirmBtn" class="cancel-btn">
+                        Cancel
+                    </button>
+                    <button id="saveConfirmBtn" class="save-btn">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay Background -->
+        <div id="modalOverlay" class="modal-overlay"></div>
+
+        <script src="/Project_LMS/JavaScript/main.js"></script>
+        <script src="../task/task.js"></script>
+        <script src="tasks.js"></script>
+    </body>
+</html>

@@ -1,0 +1,199 @@
+/* Profile Page Specific Styles */
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.profile-content {
+    display: flex;
+    gap: 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+/* Profile Picture Section */
+.profile-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+.profile-picture {
+    width: 180px;
+    height: 180px;
+    background-color: #8bc34a; /* Green color as in the image */
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-initial {
+    font-size: 100px;
+    color: white;
+    font-weight: lighter;
+}
+
+#profileImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture:hover::before {
+    content: "\f03e";
+    font-family: "Font Awesome 6 Free";
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+.upload-btn {
+    background-color: transparent;
+    color: #0a5c36;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+.upload-btn:hover {
+    text-decoration: underline;
+}
+
+/* Profile Info Section */
+.profile-info-section {
+    flex: 1;
+}
+
+.profile-info-section h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Password Section */
+.password-section {
+    margin: 20px 0;
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: #0a5c36;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+}
+
+.secondary-btn:hover {
+    text-decoration: underline;
+}
+
+.password-fields {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.primary-btn {
+    background-color: #0a5c36;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn {
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.primary-btn:hover {
+    background-color: #0c3a0c;
+}
+
+.cancel-btn:hover {
+    background-color: #e5e5e5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .profile-picture-section {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
