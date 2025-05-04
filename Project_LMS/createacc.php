@@ -38,8 +38,7 @@
             <!-- Role options container -->
             <div class="role-options">
                 <!-- Student role button -->
-                <label class="role-button">
-                    <input type="radio" name="role" value="student" />
+                <div class="role-option" data-role="student">
                     <div class="role-card">
                         <div class="role-icon student-icon">
                             <img
@@ -48,11 +47,10 @@
                         </div>
                         <p>Student</p>
                     </div>
-                </label>
+                </div>
 
                 <!-- Teacher role button -->
-                <label class="role-button">
-                    <input type="radio" name="role" value="teacher" />
+                <div class="role-option" data-role="teacher">
                     <div class="role-card">
                         <div class="role-icon teacher-icon">
                             <img
@@ -61,86 +59,41 @@
                         </div>
                         <p>Teacher</p>
                     </div>
-                </label>
+                </div>
             </div>
         </div>
 
         <!-- Create account form -->
-        <form class="signup-form" action="/Project_LMS/PHP/CLASS/signup_api.php" id="loginForm">
-            <!-- Email input -->
+        <form class="signup-form" action="../Project_LMS/PHP/CLASS/signup_api.php" method="POST" id="signupForm">
+            <!-- Hidden input for selected role -->
             <input type="hidden" name="selectedRole" id="selectedRole" value="" />
-            <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                required
-                class="full-width" />
+
+            <!-- Email input -->
+            <input type="email" placeholder="Email" name="email" required class="full-width" />
 
             <!-- Name inputs - row with two columns -->
             <div class="input-row">
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    name="firstName"
-                    required />
-                <input
-                    class="lastname"
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    required />
+                <input type="text" placeholder="First Name" name="firstName" required />
+                <input class="lastname" type="text" name="lastName" placeholder="Last Name" required />
             </div>
 
             <!-- Password input -->
-            <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                required
-                class="full-width" />
+            <input type="password" placeholder="Password" name="password" required class="full-width" />
 
             <!-- Confirm Password input -->
-            <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                required
-                class="full-width" />
+            <input type="password" placeholder="Confirm Password" name="confirmPassword" required class="full-width" />
 
             <!-- Submit button -->
-            <button type="submit" class="submit-btn">LOG IN</button>
+            <button type="submit" class="submit-btn">Create Account</button>
 
             <!-- Login link -->
             <p class="login-link">
-                Have an account? <a href="login.html">Log in</a>
+                Already have an account? <a href="login.html">Log in</a>
             </p>
         </form>
     </div>
-    <script>
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function(e) {
-                e.preventDefault(); // Prevent default form submission (POST request)
-                // Redirect to main.html
-                window.location.href = "login.html";
-            });
-        // Update hidden role value on radio click
-        document.querySelectorAll('input[name="role"]').forEach((roleInput) => {
-            roleInput.addEventListener('change', () => {
-                const selectedRole = document.getElementById('selectedRole');
-                selectedRole.value = roleInput.value;
-            });
-        });
 
-        // Optional: Prevent submission and redirect (your existing logic)
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            // You can log or send the selected role here
-            const role = document.getElementById("selectedRole").value;
-            console.log("Selected role:", role);
-            window.location.href = "login.html";
-        });
-    </script>
+    <script src="../Project_LMS/JavaScript/signup.js"></script>
 </body>
 
 </html>

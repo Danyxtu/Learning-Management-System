@@ -34,7 +34,7 @@
             <div class="role-options">
                 <!-- Student role button -->
                 <label class="role-button">
-                    <input type="radio" name="role" value="student" />
+                    <input type="radio" name="role" value="student" id="roleStudent" />
                     <div class="role-card">
                         <div class="role-icon">
                             <img src="IMAGE/student-role.png" alt="Student Icon" />
@@ -45,7 +45,7 @@
 
                 <!-- Teacher role button -->
                 <label class="role-button">
-                    <input type="radio" name="role" value="teacher" />
+                    <input type="radio" name="role" value="teacher" id="roleTeacher" />
                     <div class="role-card">
                         <div class="role-icon teacher-icon">
                             <img src="IMAGE/teacher-role.png" alt="Teacher Icon" />
@@ -57,12 +57,15 @@
         </div>
 
         <!-- Login form -->
-        <form class="login-form" id="loginForm">
+        <form class="login-form" action="../Project_LMS/PHP/CLASS/login_api.php" method="POST">
+            <!-- Hidden input for selected role -->
+            <input type="hidden" name="role" id="selectedRole" value="student" />
+
             <!-- Email input -->
-            <input type="email" id="email" placeholder="Email" pattern="^[a-zA-Z0-9._%+-]+@wmsu\.edu\.ph$" required />
+            <input type="email" id="email" name="email" placeholder="Email" pattern="^[a-zA-Z0-9._%+-]+@wmsu\.edu\.ph$" required />
 
             <!-- Password input -->
-            <input type="password" placeholder="Password" required />
+            <input type="password" name="password" placeholder="Password" required />
 
             <!-- Login button -->
             <button type="submit" class="login-btn">LOG IN</button>
@@ -77,16 +80,31 @@
 
     <!-- JavaScript to handle form submission -->
     <script>
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function (e) {
-                e.preventDefault(); // Prevent default form submission (POST request)
-                // Redirect to main.html
-                window.location.href = "main.html";
-            });
+        // Event listener for role selection
+        document.getElementById('roleStudent').addEventListener('click', function() {
+            document.getElementById('selectedRole').value = 'student';  // Update hidden input value to 'student'
+        });
 
+        document.getElementById('roleTeacher').addEventListener('click', function() {
+            document.getElementById('selectedRole').value = 'teacher';  // Update hidden input value to 'teacher'
+        });
+
+        // Event listener for form submission
         document.querySelector('form').addEventListener('submit', function (e) {
             const email = document.getElementById('email').value;
+            const role = document.querySelector('input[name="role"]:checked');
+            
+            // Ensure role is selected
+            if (!role) {
+                alert('Please choose your role.');
+                e.preventDefault();
+                return;
+            }
+
+            // Set hidden role field
+            document.getElementById('selectedRole').value = role.value;
+
+            // Validate email domain
             if (!email.endsWith('@wmsu.edu.ph')) {
                 alert('Please use your @wmsu.edu.ph email address.');
                 e.preventDefault();

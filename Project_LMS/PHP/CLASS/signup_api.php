@@ -9,7 +9,7 @@ $conn = $database->getConnection();
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize form data
-    $role = htmlspecialchars($_POST['role']);
+    $role = htmlspecialchars($_POST['selectedRole']); // corrected name
     $email = htmlspecialchars($_POST['email']);
     $firstName = htmlspecialchars($_POST['firstName']);
     $lastName = htmlspecialchars($_POST['lastName']);
@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Prepare the SQL query based on role
     if ($role === 'student') {
         $sql = "INSERT INTO students (email, first_name, last_name, password)
-                VALUES (:email, :schoolId, :course, :firstName, :lastName, :password)";
+                VALUES (:email, :firstName, :lastName, :password)";
     } elseif ($role === 'teacher') {
         $sql = "INSERT INTO teachers (email, first_name, last_name, password)
-                VALUES (:email, :schoolId, :course, :firstName, :lastName, :password)";
+                VALUES (:email, :firstName, :lastName, :password)";
     } else {
         echo "Invalid role selected.";
         exit;
@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {
-      header("Location: ../Project_LMS/login.php"); // Replace with your actual page
-      exit();
+        header("Location: ../Project_LMS/login.php"); // Redirect to login
+        exit();
     } else {
-        echo "Error: Could not insert the record.";
+        echo "Error: " . $stmt->errorInfo()[2]; // More descriptive error
     }
 }
 ?>
