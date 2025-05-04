@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CCS Learn: Class View</title>
+        <link
+            rel="icon"
+            href="IMAGE/ccs-logo.png"
+            type="image/x-icon/jpeg/png"
+        />
+        <link rel="stylesheet" href="/scratch/main.css" />
+
+        <link rel="stylesheet" href="details.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+    </head>
+
+    <body>
+        <!-- Main Container -->
+        <div class="main-container">
+            <!-- Header -->
+            <header class="header">
+                <div class="logo">
+                    <div class="menu" onclick="showSidebar()">X</div>
+                    <img src="IMAGE/ccs-logo.png" alt="CCS Logo" />
+                    <h1>CCS Learn: Your Digital Classroom</h1>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="IMAGE/ccs-logo.png" alt="User Avatar" />
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name">Laur, Solijon</p>
+                        <p class="user-role">Learner</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="content-wrapper">
+                <!-- Sidebar -->
+                <nav class="sidebar">
+                    <ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="fa fa-th-large"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-book"></i>
+                                <span>Class</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </a>
+                            <ul
+                                class="dropdown-menu show"
+                                id="sidebarClassList"
+                            >
+                                <!-- Class items will be added dynamically via JavaScript -->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                <span>Task</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out-alt"></i>
+                                <span>Log out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Main Content Area -->
+                <main class="main-content">
+                    <!-- Class Header Banner -->
+                    <div class="class-banner" id="classBanner">
+                        <div class="class-info">
+                            <h1 id="classTitle">Class 1</h1>
+                            <p id="classCode">BSIT 2A</p>
+                        </div>
+                        <div class="class-decoration">
+                            <!-- Notebook decoration from your design -->
+                        </div>
+                    </div>
+
+                    <!-- Class Tabs -->
+                    <div class="class-tabs">
+                        <ul class="tabs-list">
+                            <li class="tab-item active" data-tab="newsfeed">
+                                Newsfeed
+                            </li>
+                            <li class="tab-item" data-tab="materials">
+                                Materials
+                            </li>
+                            <li class="tab-item" data-tab="classwork">
+                                Classwork
+                            </li>
+                            <li class="tab-item" data-tab="people">People</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Newsfeed Tab -->
+                        <div class="tab-pane active" id="newsfeed">
+                            <div class="post-list" id="postList">
+                                <!-- Sample Announcement Post -->
+                                <div class="post">
+                                    <div class="post-header">
+                                        <div class="post-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Instructor Avatar"
+                                            />
+                                        </div>
+                                        <div class="post-info">
+                                            <h3 class="post-author">
+                                                Rosary Cul
+                                            </h3>
+                                            <p class="post-date">
+                                                April 1, 2024
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="post-content">
+                                        <h4 class="post-title">
+                                            OFFICIAL CLASS LIST AS OF 04/1/25
+                                        </h4>
+                                        <p class="post-date-small">
+                                            Posted on 04/01/25
+                                        </p>
+                                        <div class="post-text">
+                                            <p>
+                                                Check your Materials to find the
+                                                Official Class List document as
+                                                updated today April 1, 2025.
+                                            </p>
+                                            <p>
+                                                To help register, I have sent an
+                                                email to the Admin pleasing to
+                                                help with an easier view of the
+                                                Final Enrollment list.
+                                            </p>
+                                            <p>Thank you!</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sample Class Rules Post -->
+                                <div class="post">
+                                    <div class="post-header">
+                                        <div class="post-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Instructor Avatar"
+                                            />
+                                        </div>
+                                        <div class="post-info">
+                                            <h3 class="post-author">
+                                                Rosary Cul
+                                            </h3>
+                                            <p class="post-date">
+                                                April 1, 2024
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="post-content">
+                                        <h4 class="post-title">
+                                            CLASS GUIDELINES
+                                        </h4>
+                                        <p class="post-date-small">
+                                            Posted on 04/01/25
+                                        </p>
+                                        <div class="post-text">
+                                            <p>
+                                                Here are some general guidelines
+                                                you need to adhere to:
+                                            </p>
+                                            <ol>
+                                                <li>
+                                                    Academic Integrity: No
+                                                    plagiarism or uncited work
+                                                    is allowed.
+                                                </li>
+                                                <li>
+                                                    Regular Platform Access: You
+                                                    are expected to log in to
+                                                    the platform during your
+                                                    scheduled class sessions.
+                                                </li>
+                                                <li>
+                                                    File Format: Only PDF or
+                                                    Word files will be accepted
+                                                    for assignments.
+                                                </li>
+                                                <li>
+                                                    Official Communication: All
+                                                    official communications will
+                                                    occur via this platform.
+                                                </li>
+                                                <li>
+                                                    Respect: Always maintain a
+                                                    respectful and professional
+                                                    tone in all communications.
+                                                </li>
+                                            </ol>
+                                            <p>
+                                                Feel free to ask if you have any
+                                                questions.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materials Tab -->
+                        <div class="tab-pane" id="materials">
+                            <div class="materials-container">
+                                <div class="lesson-materials">
+                                    <h2>Lesson Materials</h2>
+
+                                    <div class="material-item">
+                                        <div class="material-icon">
+                                            <i class="fa fa-file-alt"></i>
+                                        </div>
+                                        <div class="material-info">
+                                            <h3>Lesson 1 - Introduction</h3>
+                                        </div>
+                                        <div class="material-action">
+                                            <button class="download-btn">
+                                                Download
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="material-item">
+                                        <div class="material-icon">
+                                            <i class="fa fa-file-alt"></i>
+                                        </div>
+                                        <div class="material-info">
+                                            <h3>Lesson 2 - AI Concept</h3>
+                                        </div>
+                                        <div class="material-action">
+                                            <button class="download-btn">
+                                                Download
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="official-documents">
+                                    <h2>Official Class List</h2>
+
+                                    <div class="material-item">
+                                        <div class="material-icon">
+                                            <i class="fa fa-file-alt"></i>
+                                        </div>
+                                        <div class="material-info">
+                                            <h3>Lesson 2 - AI Concept</h3>
+                                        </div>
+                                        <div class="material-action">
+                                            <button class="download-btn">
+                                                Download
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Classwork Tab -->
+                        <div class="tab-pane" id="classwork">
+                            <div class="classwork-container">
+                                <!-- Quiz 1 -->
+                                <div class="classwork-item">
+                                    <div class="classwork-header">
+                                        <div class="classwork-icon">
+                                            <i
+                                                class="fa fa-question-circle"
+                                            ></i>
+                                        </div>
+                                        <div class="classwork-info">
+                                            <h3>Quiz 1: HTML Fundamentals</h3>
+                                            <p class="classwork-date">
+                                                No due date
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="classwork-content">
+                                        <p>
+                                            This quiz will test your knowledge
+                                            of HTML syntax, elements,
+                                            attributes, and document structure.
+                                            It consists of 20 multiple choice
+                                            questions and should take
+                                            approximately 30 minutes to
+                                            complete.
+                                        </p>
+                                        <div class="attachment">
+                                            <div class="attachment-icon">
+                                                <i class="fa fa-file"></i>
+                                            </div>
+                                            <div class="attachment-info">
+                                                <p>Quiz 1</p>
+                                                <span>Multiple Forms</span>
+                                            </div>
+                                        </div>
+                                        <div class="classwork-footer">
+                                            <button class="view-details-btn">
+                                                View Details
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Assignment 1 -->
+                                <div class="classwork-item">
+                                    <div class="classwork-header">
+                                        <div class="classwork-icon">
+                                            <i class="fa fa-file-alt"></i>
+                                        </div>
+                                        <div class="classwork-info">
+                                            <h3>
+                                                Assignment 1: Sample Assignment
+                                            </h3>
+                                            <p class="classwork-date">
+                                                Due: Today, 11:59 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="classwork-footer">
+                                        <button class="view-details-btn">
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Assignment 2 -->
+                                <div class="classwork-item">
+                                    <div class="classwork-header">
+                                        <div class="classwork-icon">
+                                            <i class="fa fa-file-alt"></i>
+                                        </div>
+                                        <div class="classwork-info">
+                                            <h3>
+                                                Assignment 2: Sample Assignment
+                                            </h3>
+                                            <p class="classwork-date">
+                                                Due: Tomorrow, 11:59 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="classwork-footer">
+                                        <button class="view-details-btn">
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Activity: HTML/CSS Basics -->
+                                <div class="classwork-item">
+                                    <div class="classwork-header">
+                                        <div class="classwork-icon">
+                                            <i class="fa fa-laptop-code"></i>
+                                        </div>
+                                        <div class="classwork-info">
+                                            <h3>Activity 1: HTML/CSS Basics</h3>
+                                            <p class="classwork-date">
+                                                Due: 3 May, 11:59 PM
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="classwork-content">
+                                        <p>
+                                            Create a simple personal/profile
+                                            page using HTML and CSS. Your
+                                            portfolio should include:
+                                        </p>
+                                        <ul>
+                                            <li>
+                                                A header with your name and a
+                                                welcome note
+                                            </li>
+                                            <li>A section about yourself</li>
+                                            <li>
+                                                A skills section with at least
+                                                three skills
+                                            </li>
+                                            <li>
+                                                A contact section with a dummy
+                                                email form
+                                            </li>
+                                            <li>
+                                                Appropriate CSS styling to make
+                                                it look professional
+                                            </li>
+                                        </ul>
+                                        <div class="attachment">
+                                            <div class="attachment-icon">
+                                                <i class="fa fa-file"></i>
+                                            </div>
+                                            <div class="attachment-info">
+                                                <p>
+                                                    Assignment_HTML-CSS_Basics.pdf
+                                                </p>
+                                                <span>PDF</span>
+                                            </div>
+                                        </div>
+                                        <div class="classwork-footer">
+                                            <button class="view-details-btn">
+                                                View Details
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- People Tab -->
+                        <div class="tab-pane" id="people">
+                            <div class="people-container">
+                                <!-- Instructor Section -->
+                                <div class="people-section">
+                                    <h2>Instructor</h2>
+                                    <div class="person-item">
+                                        <div class="person-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Instructor Avatar"
+                                            />
+                                        </div>
+                                        <div class="person-info">
+                                            <h3>Rosary Cul</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Classmates Section -->
+                                <div class="people-section">
+                                    <h2>
+                                        Classmates
+                                        <span class="student-count"
+                                            >4 students</span
+                                        >
+                                    </h2>
+
+                                    <div class="person-item">
+                                        <div class="person-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Student Avatar"
+                                            />
+                                        </div>
+                                        <div class="person-info">
+                                            <h3>Lawrence Solijon</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="person-item">
+                                        <div class="person-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Student Avatar"
+                                            />
+                                        </div>
+                                        <div class="person-info">
+                                            <h3>Joshua Stevens</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="person-item">
+                                        <div class="person-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Student Avatar"
+                                            />
+                                        </div>
+                                        <div class="person-info">
+                                            <h3>Michael Eddington</h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="person-item">
+                                        <div class="person-avatar">
+                                            <img
+                                                src="IMAGE/ccs-logo.png"
+                                                alt="Student Avatar"
+                                            />
+                                        </div>
+                                        <div class="person-info">
+                                            <h3>Hannah Gustavo</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script src="details.js"></script>
+    </body>
+</html>

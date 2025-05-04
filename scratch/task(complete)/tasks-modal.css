@@ -1,0 +1,383 @@
+/* Task Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 600px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.modal-content {
+    padding: 0;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+.modal-header .task-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    background-color: rgba(10, 92, 54, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-header .task-icon i {
+    color: #0a5c36;
+    font-size: 18px;
+}
+
+.modal-header .task-info {
+    flex: 1;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.modal-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.task-description {
+    margin-bottom: 20px;
+}
+
+.task-description p {
+    margin-top: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.task-description ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.task-description li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.task-resources {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.resource-file {
+    display: flex;
+    align-items: center;
+}
+
+.resource-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.resource-icon i {
+    color: #0a5c36;
+    font-size: 18px;
+}
+
+.resource-details {
+    flex: 1;
+}
+
+.resource-name {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.resource-type {
+    margin: 5px 0 0;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.submission-area {
+    margin-top: 20px;
+}
+
+.submission-area h3 {
+    font-size: 16px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.submission-status {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.submission-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.submission-status.submitted {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.submission-files {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 15px;
+    min-height: 60px;
+    margin-bottom: 15px;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.file-item:last-child {
+    margin-bottom: 0;
+}
+
+.file-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.file-icon i {
+    color: #0a5c36;
+    font-size: 16px;
+}
+
+.file-details {
+    flex: 1;
+}
+
+.file-name {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.file-type {
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.file-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.file-action-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.file-action-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.file-action-btn i {
+    color: #666;
+    font-size: 14px;
+}
+
+.file-action-btn.delete-btn:hover {
+    background-color: #f8d7da;
+}
+
+.file-action-btn.delete-btn:hover i {
+    color: #721c24;
+}
+
+.submission-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.upload-btn,
+.link-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.upload-btn i,
+.link-btn i {
+    margin-right: 5px;
+    color: #0a5c36;
+}
+
+.upload-btn:hover,
+.link-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    gap: 10px;
+}
+
+.cancel-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.save-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #0c3a0c;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+    background-color: #0a5c36;
+}
+
+/* Confirmation Modal Styles */
+.confirmation-modal {
+    padding: 20px;
+    text-align: center;
+}
+
+.confirmation-modal h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.confirmation-modal p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.confirmation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Empty State for Submission Files */
+.submission-files.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submission-files.empty:before {
+    content: "No work attached";
+    color: #999;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .modal {
+        width: 95%;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .modal-header .task-icon {
+        margin-bottom: 10px;
+    }
+
+    .submission-actions {
+        flex-direction: column;
+    }
+}

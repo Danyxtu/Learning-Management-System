@@ -1,0 +1,250 @@
+/* Tasks Page Specific Styles */
+
+/* Tasks Container */
+.tasks-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Tasks Header */
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tasks-header h1 {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+.tasks-filter {
+    display: flex;
+    gap: 10px;
+}
+
+.tasks-filter select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Tasks Navigation */
+.tasks-nav {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.task-nav-btn {
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+}
+
+.task-nav-btn:hover {
+    color: #0a5c36;
+}
+
+.task-nav-btn.active {
+    color: #0a5c36;
+    font-weight: bold;
+}
+
+.task-nav-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #0a5c36;
+}
+
+/* Task Section */
+.task-section {
+    margin-bottom: 30px;
+}
+
+.task-section h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Task Items */
+.task-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(10, 92, 54, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.task-icon i {
+    color: #0a5c36;
+    font-size: 18px;
+}
+
+.task-details {
+    flex: 1;
+}
+
+.task-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.task-class,
+.task-due {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.task-status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.task-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.task-status.overdue {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.task-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.task-action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #0c3a0c;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.task-action-btn:hover {
+    background-color: #0a5c36;
+}
+
+/* Completed task styling */
+.task-item.completed {
+    opacity: 0.8;
+}
+
+.task-item.completed .task-title {
+    text-decoration: line-through;
+    color: #666;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    color: #666;
+}
+
+.empty-state .empty-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #999;
+}
+
+.empty-state p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.empty-state .empty-hint {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tasks-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .tasks-filter {
+        width: 100%;
+    }
+
+    .tasks-filter select {
+        flex: 1;
+    }
+
+    .task-item {
+        flex-wrap: wrap;
+    }
+
+    .task-details {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .task-status {
+        margin-left: 55px; /* Align with task details (icon width + margin) */
+        margin-bottom: 10px;
+    }
+
+    .task-action-btn {
+        margin-left: auto;
+    }
+}
