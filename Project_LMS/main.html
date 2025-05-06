@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/main.css" />
     <link rel="stylesheet" href="CSS/nav-bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    
 </head>
 <body>
     <!-- Join Class Modal -->
@@ -56,8 +57,8 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <div class="menu" onclick=showSidebar()>
-                    X
+                <div class="menu" onclick="showSidebar()">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
                 <img src="IMAGE/ccs-logo.png" alt="CCS Logo" />
                 <h1>CCS Learn: Your Digital Classroom</h1>
@@ -76,7 +77,7 @@
         <!-- Main Content -->
         <div class="content-wrapper">
             <!-- Sidebar -->
-            <nav class="sidebar">
+            <nav class="sidebar" id="sidebar">
                 <!-- <button class="close-btn" id="closeBtn">&times;</button> -->
                 <ul>
                     <li>
@@ -85,14 +86,8 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-calendar"></i>
-                            <span>Calendar</span>
-                        </a>
-                    </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle">
+                        <a href="details.html" class="dropdown-toggle">
                             <i class="fa fa-book"></i>
                             <span>Class</span>
                             <i class="fa fa-chevron-down"></i>
@@ -107,15 +102,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="tasks.html">
                             <i class="fa fa-tasks"></i>
                             <span>Task</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fa fa-cog"></i>
-                            <span>Settings</span>
+                        <a href="profile.html">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Profile</span>
                         </a>
                     </li>
                     <li>
@@ -257,7 +252,8 @@
         </div>
     </div>
 
-    <script src="JavaScript/main.js"></script>
+    <script src="../Project_LMS/JavaScript/main.js"></script>
+    <script src="JavaScript/sidebar.js"></script>
 </body>
 
 </html>

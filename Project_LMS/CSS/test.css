@@ -1,44 +1,51 @@
+/* ============================================= */
+/*                 GOOGLE FONTS                  */
+/* ============================================= */
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-/* Base Styles */
+/* ============================================= */
+/*                 BASE STYLES                   */
+/* ============================================= */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", Arial, sans-serif;
+    box-sizing: border-box; /* Ensures padding doesn't affect element width */
+    font-family: "Inter", Arial, sans-serif; /* Default font stack */
 }
 
 body {
-    background-color: #f0f0f0;
-    color: #333;
-    line-height: 1.6;
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text color */
+    line-height: 1.6; /* Improved readability */
 }
 
-/* Modal Styles */
+/* ============================================= */
+/*                 MODAL STYLES                  */
+/* ============================================= */
 .modal {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1000;
+    z-index: 1000; /* Ensure modal appears above other content */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto;
+    margin: 10% auto; /* Center modal vertically */
     width: 80%;
-    max-width: 500px;
+    max-width: 500px; /* Maximum width for larger screens */
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     position: relative;
 }
 
 .modal-header {
     padding: 15px 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #eee; /* Light separator */
 }
 
 .modal-header h2 {
@@ -51,6 +58,7 @@ body {
     padding: 20px;
 }
 
+/* Join Class Form Styles */
 .join-class-form h3 {
     margin-bottom: 15px;
     font-size: 18px;
@@ -96,9 +104,10 @@ input[type="text"] {
     color: #666;
 }
 
+/* Modal Action Buttons */
 .modal-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Align buttons to the right */
     padding: 10px 0;
 }
 
@@ -108,7 +117,8 @@ input[type="text"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    margin-left: 10px;
+    margin-left: 10px; /* Space between buttons */
+    transition: background-color 0.3s; /* Smooth hover effect */
 }
 
 .btn-cancel {
@@ -116,16 +126,26 @@ input[type="text"] {
     color: #666;
 }
 
+.btn-cancel:hover {
+    background-color: #f5f5f5;
+}
+
 .btn-join {
-    background-color: #0a5c36;
+    background-color: #0a5c36; /* Dark green */
     color: white;
 }
 
-/* Main Container Styles */
+.btn-join:hover {
+    background-color: #0c3a0c; /* Darker green on hover */
+}
+
+/* ============================================= */
+/*               LAYOUT STRUCTURE                */
+/* ============================================= */
 .main-container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Full viewport height */
 }
 
 /* Header Styles */
@@ -138,6 +158,7 @@ input[type="text"] {
     border-bottom: 1px solid #eee;
 }
 
+/* Logo Styles */
 .logo {
     display: flex;
     align-items: center;
@@ -147,12 +168,12 @@ input[type="text"] {
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular logo */
 }
 
 .logo h1 {
     font-size: 30px;
-    color: #0a5c36;
+    color: #0a5c36; /* Dark green */
     font-weight: bold;
 }
 
@@ -163,6 +184,7 @@ input[type="text"] {
     margin-left: 10px;
 }
 
+/* User Profile Styles */
 .user-profile {
     display: flex;
     align-items: center;
@@ -171,17 +193,18 @@ input[type="text"] {
 .user-avatar {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular avatar */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 10px;
+    overflow: hidden; /* Ensure image stays within bounds */
 }
 
 .user-avatar img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    object-fit: cover; /* Ensure image covers the space */
 }
 
 .user-info {
@@ -201,13 +224,15 @@ input[type="text"] {
 /* Content Wrapper */
 .content-wrapper {
     display: flex;
-    flex: 1;
+    flex: 1; /* Take up remaining space */
 }
 
-/* Sidebar */
+/* ============================================= */
+/*                 SIDEBAR STYLES                */
+/* ============================================= */
 .sidebar {
     width: 180px;
-    background-color: #0c3a0c;
+    background-color: #0c3a0c; /* Dark green */
     color: white;
     padding: 20px 0;
 }
@@ -231,7 +256,7 @@ input[type="text"] {
 
 .sidebar a:hover,
 .sidebar li.active a {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
 }
 
 .sidebar i {
@@ -240,60 +265,66 @@ input[type="text"] {
     text-align: center;
 }
 
-/* Dropdown */
+/* Dropdown Menu Styles */
 .dropdown-toggle {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    cursor: pointer;
 }
 
 .dropdown-menu {
-    max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    max-height: 0; /* Start collapsed */
 }
 
 .dropdown-menu.show {
-    max-height: 500px;
+    max-height: 500px; /* Expand to fit content */
 }
 
-.dropdown-menu a {
-    padding-left: 40px;
-}
-
-.fa-chevron-down {
-    transition: transform 0.3s;
+.dropdown-toggle .fa-chevron-down {
+    transition: transform 0.3s ease;
+    margin-left: auto; /* Align to the right */
 }
 
 .dropdown-toggle.active .fa-chevron-down {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Rotate when active */
 }
 
-.class-item i {
-    font-size: 10px;
+.dropdown-menu a {
+    padding-left: 40px; /* Indent nested items */
 }
 
-/* Main Content */
+/* ============================================= */
+/*               MAIN CONTENT STYLES             */
+/* ============================================= */
 .main-content {
     flex: 1;
     padding: 20px;
-    overflow-y: auto;
+    overflow-y: auto; /* Enable scrolling if content overflows */
     background-color: #f0f0f0;
 }
 
+/* Dashboard Grid Layout */
 .dashboard-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     gap: 20px;
 }
 
-/* Dashboard Cards */
+/* Dashboard Card Styles */
 .dashboard-card {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-header {
@@ -313,26 +344,30 @@ input[type="text"] {
 .card-body {
     padding: 15px;
     min-height: 200px;
+    flex: 1; /* Take remaining space */
+    overflow: hidden; /* Prevent content overflow */
+    position: relative;
 }
 
-/* Add Button */
+/* Add Button Styles */
 .add-button {
     width: 30px;
     height: 30px;
-    border-radius: 50%;
+    border-radius: 50%; /* Circular button */
     background-color: white;
     border: 1px solid #0c3a0c;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .add-button:hover {
     background-color: #f5f5f5;
 }
 
-/* Empty State */
+/* Empty State Styles */
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -356,27 +391,29 @@ input[type="text"] {
     margin-top: 5px;
 }
 
-/* Class Card */
+/* ============================================= */
+/*               CLASS CARD STYLES               */
+/* ============================================= */
 .class-card {
-    background-color: #ffd95a; /* Yellow color shown in both images */
+    background-color: #ffd95a; /* Yellow background */
     border-radius: 5px;
     padding: 20px;
     color: #333;
     position: relative;
     overflow: hidden;
     margin-bottom: 15px;
-    min-height: 120px; /* Ensure enough height for the decoration */
-    display: flex; /* Use flexbox to align content and decoration */
-    justify-content: flex-start; /* Align content to the left */
-    align-items: center; /* Vertically center the content */
+    min-height: 120px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .class-card-content {
     position: relative;
     z-index: 2;
-    width: 70%; /* Takes up 70% of the card width */
-    padding-right: 10px; /* Add spacing between content and decoration */
-    text-align: left; /* Ensure text aligns to the left */
+    width: 70%; /* 70% width for content */
+    padding-right: 10px;
+    text-align: left;
 }
 
 .class-title {
@@ -395,35 +432,29 @@ input[type="text"] {
     color: #444;
 }
 
-/* Update the decoration to match the notebook/notes style from image 2 */
+/* Class Decoration (Notebook Image) */
 .class-decoration {
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
     opacity: 0.9;
-    width: 30%; /* Takes up 30% of the card width */
-    height: 100%; /* Matches the height of the card */
-    background-image: url("../images/1.png"); /* Replace with your notes icon path */
+    width: 30%; /* 30% width for decoration */
+    height: 100%;
+    background-image: url("../images/1.png");
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
 }
 
-/* Remove this if you're using a background image instead */
-.class-decoration img {
-    height: 70px;
-    object-fit: contain;
-}
-
-/* Make classes container scrollable */
+/* Classes Container with Scroll */
 #classesContainer {
-    max-height: 300px; /* Adjust this value as needed */
+    max-height: 300px;
     overflow-y: auto;
-    padding-right: 5px; /* Add some padding for the scrollbar */
+    padding-right: 5px; /* Space for scrollbar */
 }
 
-/* Custom scrollbar styling (optional) */
+/* Custom Scrollbar Styles */
 #classesContainer::-webkit-scrollbar {
     width: 6px;
 }
@@ -442,38 +473,9 @@ input[type="text"] {
     background: #0a5c36;
 }
 
-/* Ensure the dashboard card maintains its height */
-.dashboard-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.card-body {
-    flex: 1;
-    overflow: hidden; /* Hide overflow so it doesn't affect layout */
-    position: relative;
-}
-
-/* Maintain fixed height for the dashboard grid */
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: minmax(400px, auto) minmax(300px, auto);
-    gap: 20px;
-}
-
-/* Add these styles to ensure task list scrolls when needed */
-#taskContainer {
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-#taskItems {
-    padding-right: 5px;
-}
-
-/* Calendar */
+/* ============================================= */
+/*               CALENDAR STYLES                 */
+/* ============================================= */
 .calendar-container {
     width: 100%;
 }
@@ -497,6 +499,7 @@ input[type="text"] {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    transition: background-color 0.3s;
 }
 
 .calendar-nav-btn:hover {
@@ -519,7 +522,7 @@ input[type="text"] {
 
 .calendar-weekdays {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for weekdays */
     text-align: center;
     font-weight: bold;
     color: #666;
@@ -531,7 +534,7 @@ input[type="text"] {
 
 .calendar-days {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for days */
     gap: 5px;
 }
 
@@ -542,10 +545,11 @@ input[type="text"] {
     transition: background-color 0.2s;
     border-right: 1px solid #eee;
     border-bottom: 1px solid #eee;
+    text-align: center;
 }
 
 .calendar-day:nth-child(7n) {
-    border-right: none;
+    border-right: none; /* Remove right border for last column */
 }
 
 .calendar-day:hover {
@@ -568,10 +572,12 @@ input[type="text"] {
     color: #000;
 }
 
-/* Stats Grid */
+/* ============================================= */
+/*               STATS GRID STYLES               */
+/* ============================================= */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     grid-gap: 15px;
 }
 
@@ -593,7 +599,9 @@ input[type="text"] {
     color: #666;
 }
 
-/* Task Items */
+/* ============================================= */
+/*               TASK ITEM STYLES                */
+/* ============================================= */
 .task-items {
     display: flex;
     flex-direction: column;
@@ -641,16 +649,20 @@ input[type="text"] {
     margin-bottom: 2px;
 }
 
-/* Responsive Styles */
+/* ============================================= */
+/*               RESPONSIVE STYLES               */
+/* ============================================= */
 @media (max-width: 992px) {
+    /* Stack dashboard cards on tablet */
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
+    /* Mobile layout adjustments */
     .content-wrapper {
-        flex-direction: column;
+        flex-direction: column; /* Stack sidebar and main content */
     }
 
     .sidebar {
@@ -662,21 +674,22 @@ input[type="text"] {
         padding: 10px;
     }
 
+    /* Adjust class card layout for mobile */
     .class-card {
-        flex-direction: column; /* Stack content and decoration vertically */
-        min-height: auto; /* Allow height to adjust */
+        flex-direction: column;
+        min-height: auto;
     }
 
     .class-card-content {
-        width: 100%; /* Take full width */
+        width: 100%;
         padding-right: 0;
-        margin-bottom: 10px; /* Space before decoration */
+        margin-bottom: 10px;
     }
 
     .class-decoration {
-        position: relative; /* Remove absolute positioning */
-        width: 100%; /* Take full width */
-        height: auto; /* Adjust height based on image */
+        position: relative;
+        width: 100%;
+        height: auto;
         background-size: contain;
         background-position: center;
     }

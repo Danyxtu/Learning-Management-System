@@ -203,43 +203,6 @@ input[type="text"] {
     display: flex;
     flex: 1;
 }
-
-/* Sidebar */
-.sidebar {
-    width: 180px;
-    background-color: #0c3a0c;
-    color: white;
-    padding: 20px 0;
-}
-
-.sidebar ul {
-    list-style-type: none;
-}
-
-.sidebar li {
-    margin-bottom: 20px;
-}
-
-.sidebar a {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-}
-
-.sidebar a:hover,
-.sidebar li.active a {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.sidebar i {
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
-}
-
 /* Dropdown */
 .dropdown-toggle {
     position: relative;
@@ -653,10 +616,6 @@ input[type="text"] {
         flex-direction: column;
     }
 
-    .sidebar {
-        width: 100%;
-        padding: 10px 0;
-    }
 
     .main-content {
         padding: 10px;

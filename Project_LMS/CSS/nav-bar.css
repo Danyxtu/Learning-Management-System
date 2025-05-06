@@ -88,6 +88,7 @@ body {
 
 /* Sidebar */
 .sidebar {
+  display: block;
   width: 100%;
   max-width: 180px;
   background-color: #0c3a0c;
@@ -172,11 +173,9 @@ body {
 .hide-sidebar{
   display: none;
 }
-.show{
-  display: block;
-}
+
 @media (max-width: 768px) {
-  .sidebar{
+  #sidebar{
     display: none;
   }
   body{
@@ -184,5 +183,8 @@ body {
   }
   .menu{
     display: block;
+  }
+  .logo h1{
+    font-size: 20px;
   }
 }

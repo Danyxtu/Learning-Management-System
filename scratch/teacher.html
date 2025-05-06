@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CCS Learn: Your Digital Classroom</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      background-color: #f0f0f0;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: white;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0f5122;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .logo-circle {
+      width: 32px;
+      height: 32px;
+      background-color: #0f5122;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .logo-circle img {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #0f5122;
+      border-radius: 50%;
+    }
+    
+    .user-info {
+      text-align: right;
+    }
+    
+    .user-name {
+      font-weight: 500;
+    }
+    
+    .user-role {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .container {
+      display: flex;
+      height: calc(100vh - 60px);
+    }
+    
+    .sidebar {
+      width: 180px;
+      background-color: #0f5122;
+      color: white;
+      padding: 20px 0;
+    }
+    
+    .sidebar-menu {
+      list-style: none;
+    }
+    
+    .sidebar-menu-item {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    
+    .sidebar-menu-item.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .sidebar-menu-item svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .sub-menu {
+      margin-left: 20px;
+      list-style: none;
+      margin-top: 5px;
+    }
+    
+    .sub-menu-item {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    
+    .sub-menu-item.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .sub-menu-item-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .class-header {
+      background-color: #ffd54f;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .class-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .class-code, .class-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    
+    .notebook-graphic {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 200px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    
+    .notebook {
+      width: 150px;
+      height: 120px;
+      background-color: #e0e0e0;
+      border-radius: 5px 20px 20px 5px;
+      position: relative;
+      overflow: hidden;
+      transform: rotate(-15deg);
+    }
+    
+    .notebook::before {
+      content: "NOTES";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      color: #0f5122;
+      font-weight: bold;
+      font-size: 24px;
+    }
+    
+    .notebook::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 20px;
+      background-color: #0f5122;
+      border-radius: 5px 0 0 5px;
+    }
+    
+    .notebook-spiral {
+      position: absolute;
+      left: 25px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    
+    .spiral-line {
+      width: 10px;
+      height: 3px;
+      background-color: #0f5122;
+      border-radius: 2px;
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .tab.active {
+      border-bottom: 2px solid #0f5122;
+      color: #0f5122;
+    }
+    
+    .post-button {
+      background-color: #0f5122;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .post-button svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .post {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    
+    .post-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #ffd54f;
+      border-radius: 50%;
+    }
+    
+    .author-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .author-name {
+      font-weight: 500;
+    }
+    
+    .post-date {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .post-actions svg {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .post-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    
+    .post-content {
+      line-height: 1.6;
+    }
+    
+    /* Modal styles */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .modal {
+      background-color: white;
+      border-radius: 8px;
+      width: 600px;
+      max-width: 90%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .modal-title {
+      font-size: 24px;
+      font-weight: 500;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .modal-body {
+      padding: 20px;
+    }
+    
+    .modal-footer {
+      padding: 15px 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .modal-button {
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    .modal-button-primary {
+      background-color: #0f5122;
+      color: white;
+      border: none;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .form-select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+    }
+    
+    .form-textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      min-height: 200px;
+      background-color: #f9f9f9;
+    }
+    
+    .formatting-toolbar {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .format-button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #666;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Details modal */
+    .details-modal {
+      width: 400px;
+    }
+    
+    .details-list {
+      list-style: none;
+    }
+    
+    .details-item {
+      margin-bottom: 15px;
+    }
+    
+    .details-label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    
+    .details-value {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <div class="logo-circle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      CCS Learn: Your Digital Classroom
+    </div>
+    <div class="user-profile">
+      <div class="user-info">
+        <div class="user-name">Danny Gpt</div>
+        <div class="user-role">Instructor</div>
+      </div>
+      <div class="user-avatar"></div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+          </svg>
+          Dashboard
+        </li>
+        <li class="sidebar-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+          </svg>
+          Calendar
+        </li>
+        <li class="sidebar-menu-item active">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"></path>
+          </svg>
+          Class
+        </li>
+        <ul class="sub-menu">
+          <li class="sub-menu-item active">
+            <div class="sub-menu-item-icon" style="background-color: #ffd54f;"></div>
+            Class 1
+          </li>
+          <li class="sub-menu-item">
+            <div class="sub-menu-item-icon" style="background-color: #4caf50;"></div>
+            Class 2
+          </li>
+        </ul>
+        <li class="sidebar-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"></path>
+          </svg>
+          Review
+        </li>
+        <li class="sidebar-menu-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"></path>
+          </svg>
+          Settings
+        </li>
+        <li class="sidebar-menu-item" style="margin-top: auto;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"></path>
+          </svg>
+          Log out
+        </li>
+      </ul>
+    </div>
+    
+    <div class="main-content">
+      <div class="class-header">
+        <div class="class-title">Class 1</div>
+        <div class="class-code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#333">
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path>
+          </svg>
+          jzqt244
+        </div>
+        <div class="class-section">BSIT 2A</div>
+        <div class="notebook-graphic">
+          <div class="notebook">
+            <div class="notebook-spiral">
+              <div class="spiral-line"></div>
+              <div class="spiral-line"></div>
+              <div class="spiral-line"></div>
+              <div class="spiral-line"></div>
+              <div class="spiral-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tabs">
+        <div class="tab active">Newsfeed</div>
+        <div class="tab">Materials</div>
+        <div class="tab">Classwork</div>
+        <div class="tab">People</div>
+      </div>
+      
+      <button class="post-button" id="show-announcement-modal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+          <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+        </svg>
+        Post
+      </button>
+      
+      <div class="posts-container">
+        <div class="post">
+          <div class="post-header">
+            <div class="post-author">
+              <div class="author-avatar"></div>
+              <div class="author-info">
+                <div class="author-name">Danny Gpt</div>
+                <div class="post-date">April 1, 2025</div>
+              </div>
+            </div>
+            <div class="post-actions">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="post-title">OFFICIAL CLASS LIST AS OF 04.1.25</div>
+          <div class="post-content">
+            <p>Dear students,</p>
+            <p>Check your <strong>Materials</strong> to find the <strong>Official Class List document</strong> as updated today, April 1, 2025. In this regard, if you have friends, classmates, or acquaintances who belong to the class and whose names also appear already on the list, please provide them with our class code so they can also monitor my announcements and posts here. Thank you for your cooperation. Keep safe everyone!</p>
+          </div>
+        </div>
+        
+        <div class="post">
+          <div class="post-header">
+            <div class="post-author">
+              <div class="author-avatar"></div>
+              <div class="author-info">
+                <div class="author-name">Danny Gpt</div>
+                <div class="post-date">April 1, 2025</div>
+              </div>
+            </div>
+            <div class="post-actions">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="post-title">CLASS GUIDELINES</div>
+          <div class="post-content">
+            <p>Dear students,</p>
+            <p>Here are some general guidelines you need to understand with regards to the systematized process of our class this semester:</p>
+            <ol>
+              <li>Academic Use Only: This LMS platform must be utilized solely for academic purposes. Only relevant class-related communications will be entertained; social media behavior is not allowed and will not be tolerated.</li>
+              <li>Regular Platform Access: You are expected to log in to this platform during our Activity/Online mode to check classwork and announcements. Use the Task section for tracking your works and requirements.</li>
+              <li>No Facebook Group Chat: A Facebook GC will not be created for this class. All information will be announced during F2F meetings OR on this platform during asynchronous mode.</li>
+              <li>Official Communication: All official communication will occur during face-to-face meetings and through this LMS platform. Monitor CCS Learn LMS regularly for updates.</li>
+              <li>Addressing Concerns: Questions and concerns should be brought up personally during scheduled meetings. I will not respond to private messages or inquiries through other channels.</li>
+            </ol>
+            <p>With that, I hope you are appropriately guided. Once again, welcome to CLASS 1! Keep safe and all the best!</p>
+          </div>
+        </div>
+        
+        <div class="post">
+          <div class="post-header">
+            <div class="post-author">
+              <div class="author-avatar"></div>
+              <div class="author-info">
+                <div class="author-name">Danny Gpt</div>
+                <div class="post-date">April 1, 2025</div>
+              </div>
+            </div>
+            <div class="post-actions">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="post-title">Welcome to CLASS 1-A!</div>
+          <div class="post-content">
+            <p>Dear students,</p>
+            <p>This platform will serve as the meeting ground of our class for the whole summer. <strong>Important class announcements, updates about your records and performance, lesson materials as well as submissions of your online outputs will be done here.</strong> Do remember, this platform is exclusive only to the students registered under this course's schedule, which therefore means that you are not permitted to invite outsiders in or distribute the class code to anyone not listed in the official class list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Announcement Modal -->
+  <div class="modal-backdrop" id="announcement-modal" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Announcement</div>
+        <button class="modal-close" id="close-announcement-modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">FOR</label>
+          <select class="form-select">
+            <option value="classes">Classes</option>
+            <option value="students">Students</option>
+            <option value="groups">Groups</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea class="form-textarea" placeholder="Announce something to your class"></textarea>
+          <div class="formatting-toolbar">
+            <button class="format-button"><strong>B</strong></button>
+            <button class="format-button"><em>I</em></button>
+            <button class="format-button"><u>U</u></button>
+            <button class="format-button">≡</button>
+            <button class="format-button">≡≡</button>
+            <button class="format-button">≡≡≡</button>
+            <button class="format-button">≡≡≡≡</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-button modal-button-primary">Update</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Subject Details Modal -->
+  <div class="modal-backdrop" id="details-modal" style="display: none;">
+    <div class="modal details-modal">
+      <div class="modal-header">
+        <div class="modal-title">Subject Details</div>
+        <button class="modal-close" id="close-details-modal">×</button>
+      </div>
+      <div class="modal-body">
+        <ul class="details-list">
+          <li class="details-item">
+            <div class="details-label">Class Code</div>
+            <div class="details-value">jzqt244</div>
+          </li>
+          <li class="details-item">
+            <div class="details-label">Instructor Name</div>
+            <div class="details-value">Danny Gpt</div>
+          </li>
+          <li class="details-item">
+            <div class="details-label">Room</div>
+            <div class="details-value">Lec 1</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Modal functionality
+    const announcementModal = document.getElementById('announcement-modal');
+    const detailsModal = document.getElementById('details-modal');
+    const showAnnouncementModalBtn = document.getElementById('show-announcement-modal');
+    const closeAnnouncementModalBtn = document.getElementById('close-announcement-modal');
+    const closeDetailsModalBtn = document.getElementById('close-details-modal');
+    
+    showAnnouncementModalBtn.addEventListener('click', () => {
+      announcementModal.style.display = 'flex';
+    });
+    
+    closeAnnouncementModalBtn.addEventListener('click', () => {
+      announcementModal.style.display = 'none';
+    });
+    
+    closeDetailsModalBtn.addEventListener('click', () => {
+      detailsModal.style.display = 'none';
+    });
+    
+    // Show details modal when clicking on class code
+    document.querySelector('.class-code').addEventListener('click', () => {
+      detailsModal.style.display = 'flex';
+    });
+    
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === announcementModal) {
+        announcementModal.style.display = 'none';
+      }
+      if (e.target === detailsModal) {
+        detailsModal.style.display = 'none';
+      }
+    });

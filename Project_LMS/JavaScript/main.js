@@ -323,18 +323,6 @@ function navigateMonth(direction) {
 // Initialize the app when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
 
-// Responsive Sidebar function
 
 
-function showSidebar(){
-    const sidebar = document.getElementsByClassName('sidebar');
-    sidebar.classList.add('show');
-}
 
-// document.addEventListener("click", (e)=>{
-//     const sidebar = document.querySelector('.sidebar');
-//     const menu = document.querySelector(".menu");
-//     if(!sidebar.contains(e.target) && !menu.contains(e.target)){
-//         sidebar.style.display = "none";
-//     }
-// });

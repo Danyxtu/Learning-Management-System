@@ -7,9 +7,12 @@
   <title>CCS Learn: Class View</title>
   <link rel="icon" href="IMAGE/ccs-logo.png" type="image/x-icon/jpeg/png" />
   <link rel="stylesheet" href="/Project_LMS/CSS/test.css" />
-
   <link rel="stylesheet" href="/Project_LMS/CSS/details.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="CSS/teacher_details.css">
+  <style>
+
+  </style>
 </head>
 
 <body>
@@ -110,6 +113,9 @@
           <div class="tab-pane active" id="newsfeed">
             <div class="post-list" id="postList">
               <!-- Sample Announcement Post -->
+              <button class="action-button" onclick="openAddPostModal()">
+                <i class="fa fa-plus"></i> Create Post
+              </button>
               <div class="post">
                 <div class="post-header">
                   <div class="post-avatar">
@@ -144,6 +150,14 @@
                       Final Enrollment list.
                     </p>
                     <p>Thank you!</p>
+                  </div>
+                  <div class="post-actions">
+                    <button class="action-button">
+                      <i class="fa fa-bookmark"></i> Save
+                    </button>
+                    <button class="action-button">
+                      <i class="fa fa-comment"></i> Comment
+                    </button>
                   </div>
                 </div>
               </div>
@@ -208,8 +222,20 @@
                       questions.
                     </p>
                   </div>
+                  <div class="post-actions">
+                    <button class="action-button">
+                      <i class="fa fa-bookmark"></i> Save
+                    </button>
+                    <button class="action-button">
+                      <i class="fa fa-comment"></i> Comment
+                    </button>
+                  </div>
                 </div>
               </div>
+            </div>
+            <!-- Floating Add Post Button -->
+            <div class="add-post-button" onclick="openAddPostModal()">
+              <i class="fa fa-plus"></i>
             </div>
           </div>
 
@@ -217,7 +243,12 @@
           <div class="tab-pane" id="materials">
             <div class="materials-container">
               <div class="lesson-materials">
-                <h2>Lesson Materials</h2>
+                <div class="section-header">
+                  <h2>Lesson Materials</h2>
+                  <button class="action-button" onclick="openAddMaterialModal('lesson')">
+                    <i class="fa fa-plus"></i> Add Material
+                  </button>
+                </div>
 
                 <div class="material-item">
                   <div class="material-icon">
@@ -227,8 +258,8 @@
                     <h3>Lesson 1 - Introduction</h3>
                   </div>
                   <div class="material-action">
-                    <button class="download-btn">
-                      Download
+                    <button class="action-button">
+                      <i class="fa fa-download"></i> Download
                     </button>
                   </div>
                 </div>
@@ -241,26 +272,31 @@
                     <h3>Lesson 2 - AI Concept</h3>
                   </div>
                   <div class="material-action">
-                    <button class="download-btn">
-                      Download
+                    <button class="action-button">
+                      <i class="fa fa-download"></i> Download
                     </button>
                   </div>
                 </div>
               </div>
 
               <div class="official-documents">
-                <h2>Official Class List</h2>
+                <div class="section-header">
+                  <h2>Official Class List</h2>
+                  <button class="action-button" onclick="openAddMaterialModal('document')">
+                    <i class="fa fa-plus"></i> Add Document
+                  </button>
+                </div>
 
                 <div class="material-item">
                   <div class="material-icon">
                     <i class="fa fa-file-alt"></i>
                   </div>
                   <div class="material-info">
-                    <h3>Lesson 2 - AI Concept</h3>
+                    <h3>Official Class List - 2025</h3>
                   </div>
                   <div class="material-action">
-                    <button class="download-btn">
-                      Download
+                    <button class="action-button">
+                      <i class="fa fa-download"></i> Download
                     </button>
                   </div>
                 </div>
@@ -270,6 +306,12 @@
 
           <!-- Classwork Tab -->
           <div class="tab-pane" id="classwork">
+            <div class="section-header">
+              <h2>Classwork</h2>
+              <button class="action-button" onclick="openAddClassworkModal()">
+                <i class="fa fa-plus"></i> Add Classwork
+              </button>
+            </div>
             <div class="classwork-container">
               <!-- Quiz 1 -->
               <div class="classwork-item">
@@ -304,8 +346,8 @@
                     </div>
                   </div>
                   <div class="classwork-footer">
-                    <button class="view-details-btn">
-                      View Details
+                    <button class="action-button">
+                      <i class="fa fa-eye"></i> View Details
                     </button>
                   </div>
                 </div>
@@ -327,8 +369,8 @@
                   </div>
                 </div>
                 <div class="classwork-footer">
-                  <button class="view-details-btn">
-                    View Details
+                  <button class="action-button">
+                    <i class="fa fa-eye"></i> View Details
                   </button>
                 </div>
               </div>
@@ -349,8 +391,8 @@
                   </div>
                 </div>
                 <div class="classwork-footer">
-                  <button class="view-details-btn">
-                    View Details
+                  <button class="action-button">
+                    <i class="fa fa-eye"></i> View Details
                   </button>
                 </div>
               </div>
@@ -405,8 +447,8 @@
                     </div>
                   </div>
                   <div class="classwork-footer">
-                    <button class="view-details-btn">
-                      View Details
+                    <button class="action-button">
+                      <i class="fa fa-eye"></i> View Details
                     </button>
                   </div>
                 </div>
@@ -432,45 +474,66 @@
 
               <!-- Classmates Section -->
               <div class="people-section">
-                <h2>
-                  Classmates
-                  <span class="student-count">4 students</span>
-                </h2>
+                <div class="section-header">
+                  <h2>
+                    Classmates
+                    <span class="student-count" id="studentCount">4 students</span>
+                  </h2>
+                  <button class="action-button" onclick="openAddStudentModal()">
+                    <i class="fa fa-user-plus"></i> Add Student
+                  </button>
+                </div>
 
-                <div class="person-item">
+                <div class="person-item" id="student-1">
                   <div class="person-avatar">
                     <img src="IMAGE/ccs-logo.png" alt="Student Avatar" />
                   </div>
                   <div class="person-info">
                     <h3>Lawrence Solijon</h3>
                   </div>
+                  <button class="action-button remove-student"
+                    onclick="confirmRemoveStudent('student-1', 'Lawrence Solijon')">
+                    <i class="fa fa-user-minus"></i> Remove
+                  </button>
                 </div>
 
-                <div class="person-item">
+                <div class="person-item" id="student-2">
                   <div class="person-avatar">
                     <img src="IMAGE/ccs-logo.png" alt="Student Avatar" />
                   </div>
                   <div class="person-info">
                     <h3>Joshua Stevens</h3>
                   </div>
+                  <button class="action-button remove-student"
+                    onclick="confirmRemoveStudent('student-2', 'Joshua Stevens')">
+                    <i class="fa fa-user-minus"></i> Remove
+                  </button>
                 </div>
 
-                <div class="person-item">
+                <div class="person-item" id="student-3">
                   <div class="person-avatar">
                     <img src="IMAGE/ccs-logo.png" alt="Student Avatar" />
                   </div>
                   <div class="person-info">
                     <h3>Michael Eddington</h3>
                   </div>
+                  <button class="action-button remove-student"
+                    onclick="confirmRemoveStudent('student-3', 'Michael Eddington')">
+                    <i class="fa fa-user-minus"></i> Remove
+                  </button>
                 </div>
 
-                <div class="person-item">
+                <div class="person-item" id="student-4">
                   <div class="person-avatar">
                     <img src="IMAGE/ccs-logo.png" alt="Student Avatar" />
                   </div>
                   <div class="person-info">
                     <h3>Hannah Gustavo</h3>
                   </div>
+                  <button class="action-button remove-student"
+                    onclick="confirmRemoveStudent('student-4', 'Hannah Gustavo')">
+                    <i class="fa fa-user-minus"></i> Remove
+                  </button>
                 </div>
               </div>
             </div>
@@ -480,7 +543,186 @@
     </div>
   </div>
 
-  <script src="/Project_LMS/JavaScript/details.js"></script>
+  <!-- Confirmation Dialog for Student Removal -->
+  <div class="dialog-overlay" id="confirmDialog">
+    <div class="dialog-box">
+      <div class="dialog-title">Confirm Student Removal</div>
+      <div class="dialog-message" id="dialogMessage">
+        Are you sure you want to remove this student?
+      </div>
+      <div class="dialog-buttons">
+        <button class="dialog-cancel" onclick="cancelRemoveStudent()">Cancel</button>
+        <button class="dialog-confirm" id="confirmButton">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Post Modal -->
+  <div class="modal-overlay" id="addPostModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Post</h3>
+        <button class="modal-close" onclick="closeModal('addPostModal')">&times;</button>
+      </div>
+
+      <!-- Backend-ready form -->
+      <form action="PHP/create_post.php" method="POST" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="postTitle">Post Title</label>
+            <input type="text" id="postTitle" name="postTitle" class="form-control" placeholder="Enter post title"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="postContent">Post Content</label>
+            <textarea id="postContent" name="postContent" class="form-control"
+              placeholder="Write your post content here..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Attach Files (Optional)</label>
+            <div class="file-upload" onclick="document.getElementById('postFileInput').click()">
+              <i class="fa fa-cloud-upload-alt"></i>
+              <p>Click to upload files or drag and drop</p>
+              <input type="file" id="postFileInput" name="postFiles[]" multiple style="display: none;">
+            </div>
+            <div id="selectedPostFiles" style="margin-top: 10px;"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="action-button" style="background-color: #6c757d;"
+            onclick="closeModal('addPostModal')">Cancel</button>
+          <button type="submit" class="action-button">Post</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Add Material Modal -->
+  <form action="PHP/upload_material.php" method="POST" enctype="multipart/form-data">
+    <div class="modal-overlay" id="addMaterialModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="materialModalTitle">Add New Material</h3>
+          <button class="modal-close" type="button" onclick="closeModal('addMaterialModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="materialTitle">Material Title</label>
+            <input type="text" id="materialTitle" name="materialTitle" class="form-control" placeholder="Enter material title" required>
+          </div>
+          <div class="form-group">
+            <label for="materialDescription">Description (Optional)</label>
+            <textarea id="materialDescription" name="materialDescription" class="form-control" placeholder="Enter a brief description..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Upload File</label>
+            <div class="file-upload" onclick="document.getElementById('materialFileInput').click()">
+              <i class="fa fa-cloud-upload-alt"></i>
+              <p>Click to upload file or drag and drop</p>
+              <input type="file" id="materialFileInput" name="materialFile" style="display: none;" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="action-button" type="button" style="background-color: #6c757d;" onclick="closeModal('addMaterialModal')">Cancel</button>
+          <button class="action-button" type="submit">Upload</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+
+
+
+  <!-- Add Classwork Modal -->
+  <div class="modal-overlay" id="addClassworkModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Classwork</h3>
+        <button class="modal-close" onclick="closeModal('addClassworkModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="classworkType">Classwork Type</label>
+          <select id="classworkType" class="form-control">
+            <option value="assignment">Assignment</option>
+            <option value="quiz">Quiz</option>
+            <option value="activity">Activity</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="classworkTitle">Title</label>
+          <input type="text" id="classworkTitle" class="form-control" placeholder="Enter classwork title">
+        </div>
+        <div class="form-group">
+          <label for="classworkInstructions">Instructions</label>
+          <textarea id="classworkInstructions" class="form-control"
+            placeholder="Enter detailed instructions..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="classworkDueDate">Due Date</label>
+          <input type="datetime-local" id="classworkDueDate" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="classworkPoints">Points (Optional)</label>
+          <input type="number" id="classworkPoints" class="form-control" placeholder="Enter point value">
+        </div>
+        <div class="form-group">
+          <label>Attach Files (Optional)</label>
+          <div class="file-upload" onclick="document.getElementById('classworkFileInput').click()">
+            <i class="fa fa-cloud-upload-alt"></i>
+            <p>Click to upload files or drag and drop</p>
+            <input type="file" id="classworkFileInput" multiple>
+          </div>
+          <div id="selectedClassworkFiles" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="action-button" style="background-color: #6c757d;"
+          onclick="closeModal('addClassworkModal')">Cancel</button>
+        <button class="action-button" onclick="submitClasswork()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Student Modal -->
+  <div class="modal-overlay" id="addStudentModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Student</h3>
+        <button class="modal-close" onclick="closeModal('addStudentModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="studentEmail">Student Email</label>
+          <input type="email" id="studentEmail" class="form-control" placeholder="Enter student email address">
+        </div>
+        <div class="form-group">
+          <label>Or Upload Student List</label>
+          <div class="file-upload" onclick="document.getElementById('studentListFile').click()">
+            <i class="fa fa-cloud-upload-alt"></i>
+            <p>Click to upload CSV file with student emails</p>
+            <input type="file" id="studentListFile" accept=".csv">
+          </div>
+          <div id="selectedStudentFile" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="action-button" style="background-color: #6c757d;"
+          onclick="closeModal('addStudentModal')">Cancel</button>
+        <button class="action-button" onclick="addStudent()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification"></div>
+
+  <!-- JavaScript -->
+  <script src="JavaScript/teacher_details.js"></script>
+
+  </script>
 </body>
 
 </html>
