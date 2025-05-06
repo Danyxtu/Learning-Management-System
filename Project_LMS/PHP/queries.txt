@@ -43,3 +43,17 @@ CREATE TABLE materials (
     user_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+// for classworks like quiz or something like that
+
+CREATE TABLE classworks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50),
+    title VARCHAR(255),
+    instructions TEXT,
+    due_date DATETIME,
+    points INT,
+    attachments TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
