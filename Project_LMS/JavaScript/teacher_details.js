@@ -1,4 +1,4 @@
- // Sample class data
+//  Sample class data
  const classData = [
   { id: 1, title: "Advanced Web Development", code: "CSIT 323" },
   { id: 2, title: "Database Management", code: "CSIT 227" },
@@ -9,26 +9,36 @@
 document.addEventListener("DOMContentLoaded", function() {
   // Populate sidebar class list
   const sidebarClassList = document.getElementById("sidebarClassList");
-  classData.forEach(cls => {
-    const li = document.createElement("li");
-    li.innerHTML = `<a href="#" data-class-id="${cls.id}">${cls.title}</a>`;
-    li.addEventListener("click", function(e) {
-      e.preventDefault();
-      loadClassData(cls);
-    });
-    sidebarClassList.appendChild(li);
+classData.forEach(cls => {
+  const li = document.createElement("li");
+  li.classList.add("class-item", "hidden");  // Start hidden
+  li.innerHTML = `<a href="#" data-class-id="${cls.id}">${cls.title}</a>`;
+  li.addEventListener("click", function(e) {
+    e.preventDefault();
+    loadClassData(cls);
   });
+  sidebarClassList.appendChild(li);
+});
 
-  document.addEventListener("DOMContentLoaded", () => {
-  const dropdownToggle = document.querySelector("#classDropdown .dropdown-toggle");
-  const dropdownMenu = document.getElementById("sidebarClassList");
-
-  dropdownToggle.addEventListener("click", (e) => {
-    e.preventDefault(); // Prevent anchor from jumping
-    dropdownMenu.classList.toggle("show");
-    dropdownToggle.classList.toggle("active"); // Rotate arrow if needed
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+dropdownToggle.addEventListener("click", function (e) {
+  e.preventDefault();
+  const items = document.querySelectorAll(".class-item");
+  items.forEach(item => {
+    item.classList.toggle("hidden");
   });
 });
+
+//   document.addEventListener("DOMContentLoaded", () => {
+//   const dropdownToggle = document.querySelector("#classDropdown .dropdown-toggle");
+//   const dropdownMenu = document.getElementById("sidebarClassList");
+
+//   dropdownToggle.addEventListener("click", (e) => {
+//     e.preventDefault(); // Prevent anchor from jumping
+//     dropdownMenu.classList.toggle("show");
+//     dropdownToggle.classList.toggle("active"); // Rotate arrow if needed
+//   });
+// });
 
 
   // Load first class by default
@@ -308,3 +318,132 @@ function openAddMaterialModal(type) {
   document.getElementById("materialModalTitle").textContent = title;
   document.getElementById("addMaterialModal").style.display = "flex";
 }
+
+
+
+// Display the file info after selecting it
+function displayUploadedFile(event) {
+  const file = event.target.files[0];
+  const fileDisplay = document.getElementById('fileDisplay');
+  
+  if (file) {
+      const fileDiv = document.createElement('div');
+      fileDiv.classList.add('file-info');
+      
+      let iconClass = "fa-file";
+      if (file.type.includes("image")) iconClass = "fa-file-image";
+      else if (file.type.includes("pdf")) iconClass = "fa-file-pdf";
+      else if (file.type.includes("word")) iconClass = "fa-file-word";
+      else if (file.type.includes("excel") || file.type.includes("sheet")) iconClass = "fa-file-excel";
+      
+      fileDiv.innerHTML = `
+          <i class="fa ${iconClass}"></i>
+          <span>${file.name} (${formatFileSize(file.size)})</span>
+      `;
+      
+      // Show the uploaded file info
+      fileDisplay.style.display = 'block';
+      fileDisplay.innerHTML = ''; // Clear any previous file info
+      fileDisplay.appendChild(fileDiv);
+  }
+}
+
+// Format the file size
+function formatFileSize(bytes) {
+  const k = 1024;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+// Handle form submission with AJAX
+document.getElementById('uploadMaterialForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const formData = new FormData(this); // Collect form data (including file)
+  const uploadStatus = document.getElementById('uploadStatus');
+
+  // Show a loading message while uploading
+  uploadStatus.style.display = 'block';
+  uploadStatus.style.color = 'blue';
+  uploadStatus.textContent = 'Uploading...';
+
+  // Send the form data using AJAX
+  fetch('PHP/upload_material.php', {
+      method: 'POST',
+      body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.status === 'success') {
+          uploadStatus.style.color = 'green';
+          uploadStatus.textContent = 'File successfully uploaded!';
+      } else {
+          uploadStatus.style.color = 'red';
+          uploadStatus.textContent = 'Error: ' + data.message;
+      }
+  })
+  .catch(error => {
+      uploadStatus.style.color = 'red';
+      uploadStatus.textContent = 'Error uploading file: ' + error.message;
+  });
+});
+
+
+
+
+// for student modal
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
+
+function submitClasswork() {
+  const formData = new FormData();
+  formData.append("classworkType", document.getElementById("classworkType").value);
+  formData.append("classworkTitle", document.getElementById("classworkTitle").value);
+  formData.append("classworkInstructions", document.getElementById("classworkInstructions").value);
+  formData.append("classworkDueDate", document.getElementById("classworkDueDate").value);
+  formData.append("classworkPoints", document.getElementById("classworkPoints").value);
+
+  const files = document.getElementById("classworkFileInput").files;
+  for (let i = 0; i < files.length; i++) {
+      formData.append("classworkFiles[]", files[i]);
+  }
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("POST", "../PHP/upload_classwork.php", true);
+  xhr.onload = function () {
+      console.log(xhr.status);
+      console.log(xhr.responseText);
+
+      if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          if (response.status === 'success') {
+              alert('Classwork created successfully!');
+              closeModal('addClassworkModal');
+          } else {
+              alert('Server error: ' + response.message);
+          }
+      } else {
+          alert('Error creating classwork. Please try again.');
+      }
+  };
+  xhr.send(formData);
+  xhr.onload = function () {
+    console.log(xhr.status);               // Status code
+    console.log(xhr.responseText);        // Full response text
+    try {
+        const res = JSON.parse(xhr.responseText);
+        if (res.status === 'success') {
+            alert('Classwork created successfully!');
+            closeModal('addClassworkModal');
+        } else {
+            alert('Error: ' + res.message);
+        }
+    } catch (e) {
+        alert('Server error. Invalid response.');
+    }
+};
+
+}
+
