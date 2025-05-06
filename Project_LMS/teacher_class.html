@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CCS Learn: Class View</title>
   <link rel="icon" href="IMAGE/ccs-logo.png" type="image/x-icon/jpeg/png" />
-  <link rel="stylesheet" href="/Project_LMS/CSS/test.css" />
-  <link rel="stylesheet" href="/Project_LMS/CSS/details.css" />
+  <link rel="stylesheet" href="CSS/test.css" />
+  <link rel="stylesheet" href="CSS/details.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="CSS/teacher_details.css">
   <link rel="stylesheet" href="CSS/nav-bar.css">
   <style>
 
-  </style>
+  </style>  
 </head>
 
 <body>
@@ -49,12 +49,12 @@
             </a>
           </li>
           <li class="dropdown active">
-            <a href="#" class="dropdown-toggle" id="sidebarClassList">
+            <a href="#" class="dropdown-toggle" >
               <i class="fa fa-book"></i>
               <span>Class</span>
               <i class="fa fa-chevron-down"></i>
             </a>
-            <ul class="dropdown-menu show" >
+            <ul class="dropdown-menu show" id="sidebarClassList">
               <!-- Class items will be added dynamically via JavaScript -->
             </ul>
           </li>
@@ -614,14 +614,14 @@
           </div>
           <div class="form-group">
             <label for="materialDescription">Description (Optional)</label>
-            <textarea id="materialDescription" name="materialDescription" class="form-control" placeholder="Enter a brief description..."></textarea>
+            <textarea id="materialDescription" name="materialDescription" class="form-control" placeholder="Enter a brief description..." maxlength="500"></textarea>
           </div>
           <div class="form-group">
             <label>Upload File</label>
             <div class="file-upload" onclick="document.getElementById('materialFileInput').click()">
               <i class="fa fa-cloud-upload-alt"></i>
               <p>Click to upload file or drag and drop</p>
-              <input type="file" id="materialFileInput" name="materialFile" style="display: none;" required>
+              <input type="file" id="materialFileInput" name="materialFile"  required>
             </div>
           </div>
         </div>
@@ -632,60 +632,56 @@
       </div>
     </div>
   </form>
-  
-
-
-
   <!-- Add Classwork Modal -->
   <div class="modal-overlay" id="addClassworkModal">
     <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">Add New Classwork</h3>
-        <button class="modal-close" onclick="closeModal('addClassworkModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="classworkType">Classwork Type</label>
-          <select id="classworkType" class="form-control">
-            <option value="assignment">Assignment</option>
-            <option value="quiz">Quiz</option>
-            <option value="activity">Activity</option>
-          </select>
+        <div class="modal-header">
+            <h3 class="modal-title">Add New Classwork</h3>
+            <button class="modal-close" onclick="closeModal('addClassworkModal')">&times;</button>
         </div>
-        <div class="form-group">
-          <label for="classworkTitle">Title</label>
-          <input type="text" id="classworkTitle" class="form-control" placeholder="Enter classwork title">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="classworkType">Classwork Type</label>
+                <select id="classworkType" class="form-control">
+                    <option value="assignment">Assignment</option>
+                    <option value="quiz">Quiz</option>
+                    <option value="activity">Activity</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="classworkTitle">Title</label>
+                <input type="text" id="classworkTitle" class="form-control" placeholder="Enter classwork title">
+            </div>
+            <div class="form-group">
+                <label for="classworkInstructions">Instructions</label>
+                <textarea id="classworkInstructions" class="form-control"
+                    placeholder="Enter detailed instructions..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="classworkDueDate">Due Date</label>
+                <input type="datetime-local" id="classworkDueDate" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="classworkPoints">Points (Optional)</label>
+                <input type="number" id="classworkPoints" class="form-control" placeholder="Enter point value">
+            </div>
+            <div class="form-group">
+                <label>Attach Files (Optional)</label>
+                <div class="file-upload" onclick="document.getElementById('classworkFileInput').click()">
+                    <i class="fa fa-cloud-upload-alt"></i>
+                    <p>Click to upload files or drag and drop</p>
+                    <input type="file" id="classworkFileInput" multiple>
+                </div>
+                <div id="selectedClassworkFiles" style="margin-top: 10px;"></div>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="classworkInstructions">Instructions</label>
-          <textarea id="classworkInstructions" class="form-control"
-            placeholder="Enter detailed instructions..."></textarea>
+        <div class="modal-footer">
+            <button class="action-button" style="background-color: #6c757d;"
+                onclick="closeModal('addClassworkModal')">Cancel</button>
+            <button class="action-button" onclick="submitClasswork()">Create</button>
         </div>
-        <div class="form-group">
-          <label for="classworkDueDate">Due Date</label>
-          <input type="datetime-local" id="classworkDueDate" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="classworkPoints">Points (Optional)</label>
-          <input type="number" id="classworkPoints" class="form-control" placeholder="Enter point value">
-        </div>
-        <div class="form-group">
-          <label>Attach Files (Optional)</label>
-          <div class="file-upload" onclick="document.getElementById('classworkFileInput').click()">
-            <i class="fa fa-cloud-upload-alt"></i>
-            <p>Click to upload files or drag and drop</p>
-            <input type="file" id="classworkFileInput" multiple>
-          </div>
-          <div id="selectedClassworkFiles" style="margin-top: 10px;"></div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="action-button" style="background-color: #6c757d;"
-          onclick="closeModal('addClassworkModal')">Cancel</button>
-        <button class="action-button" onclick="submitClasswork()">Create</button>
-      </div>
     </div>
-  </div>
+</div>
 
   <!-- Add Student Modal -->
   <div class="modal-overlay" id="addStudentModal">
