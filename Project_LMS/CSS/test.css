@@ -281,10 +281,33 @@ input[type="text"] {
     flex-direction: column;
     max-height: 0; /* Start collapsed */
 }
+.dropdown-menu{
+    display: flex;
+    
+}
+#sidebarClassList:hover{
+    cursor: pointer;
+}
 
 .dropdown-menu.show {
     max-height: 500px; /* Expand to fit content */
 }
+.hidden{
+    display: none;
+}
+/* Initially, hide items */
+.classes {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* When displayed, set opacity to 1 */
+  .classes.visible {
+    display: block;
+    opacity: 1;
+  }
+  
 
 .dropdown-toggle .fa-chevron-down {
     transition: transform 0.3s ease;
